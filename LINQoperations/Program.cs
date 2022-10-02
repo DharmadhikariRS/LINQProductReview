@@ -10,7 +10,8 @@
                 + "\n5.Retrieving the product id in list"
                 + "\n6.Skip Top five records"
                 +"\n7.Retrieving ProductID,Reviews and Adding values to DataTable"
-                + "\n8.retrieve the records whose column islike has true using (DataTable)");
+                + "\n8.retrieve the records whose column islike has true using (DataTable)"
+                +"\n9.Finding the average rating value");
             int option = Convert.ToInt32(Console.ReadLine());
             //Creating a list for Product Review 
             List<ProductReview> productReviews = new List<ProductReview>();
@@ -40,6 +41,9 @@
                     break;
                 case 8:
                     ProductReviewManager.ReturnsOnlyIsLikeFieldAsTrue();
+                    break;
+                case 9:
+                    ProductReviewManager.AverageOfRating();
                     break;
                 default:
                     Console.WriteLine("Enter correct number");
