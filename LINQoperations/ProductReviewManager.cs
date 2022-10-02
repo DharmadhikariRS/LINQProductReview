@@ -59,6 +59,15 @@ namespace LINQoperations
             }
             
         }
-
+        // UC5 Retrieving the product id in list
+        public static void RetrieveOnlyProductIdAndReviews(List<ProductReview> products)
+        {
+            AddingProductReview(products);
+            var res = products.Select(product => new { ProductId = product.productId, Review = product.review }).ToList();
+            foreach (var ele in res)
+            {
+                Console.WriteLine("ProductId " + ele.ProductId + " " + "Review " + " " + ele.Review);
+            }
+        }
     }
 }
