@@ -69,5 +69,14 @@ namespace LINQoperations
                 Console.WriteLine("ProductId " + ele.ProductId + " " + "Review " + " " + ele.Review);
             }
         }
+        /// UC6 Skip Top five records
+        public static void SkipTopFiveRecords(List<ProductReview> products)
+        {
+            AddingProductReview(products);
+            Console.WriteLine("\n Skip Top Five records in list");
+            var res = (from product in products orderby product.rating descending select product).Skip(5).ToList();
+            DisplayRecord(res);
+            
+        }
     }
 }
