@@ -126,5 +126,18 @@ namespace LINQoperations
             double result = (double)table1.Select().Where(p => p["rating"] != DBNull.Value).Select(c => Convert.ToDecimal(c["rating"])).Average();
             Console.WriteLine("Average= "+result);
         }
+        //UC-11 Retrieve all records with message "nice" in ProductReview
+        public static void ReturnsReviewMessageContainsGood()
+        {
+            List<ProductReview> products = new List<ProductReview>();
+            DataTable table = CreateDataTable(products);
+            
+            var res = from t in table.AsEnumerable() where t.Field<string>("review") == "Good" select t;
+            foreach (var p in res)
+            {
+                Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["productId"], p["userId"], p["rating"], p["review"], p["isLike"]);
+            }
+        }
+
     }
 }
