@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,5 +79,31 @@ namespace LINQoperations
             DisplayRecord(res);
             
         }
+        /// UC8 Using DataTable 
+        public static void CreateDataTable(List<ProductReview> products)
+        {
+            AddingProductReview(products);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("productId");
+            dt.Columns.Add("userId");
+            dt.Columns.Add("rating");
+            dt.Columns.Add("review");
+            dt.Columns.Add("isLike", typeof(bool));
+
+            foreach (var data in products)
+            {
+                dt.Rows.Add(data.productId, data.userId, data.rating, data.review, data.isLike);
+            }
+            DisplayTable(dt);
+        }
+        // Iterate Thorugh Table
+        public static void DisplayTable(DataTable table)
+        {
+            foreach (DataRow p in table.Rows)
+            {
+                Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["productId"], p["userId"], p["rating"], p["review"], p["isLike"]);
+            }
+        }
+
     }
 }
